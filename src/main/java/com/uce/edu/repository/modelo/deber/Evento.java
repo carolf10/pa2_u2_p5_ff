@@ -1,4 +1,4 @@
-package com.uce.edu.repository.modelo;
+package com.uce.edu.repository.modelo.deber;
 
 import java.time.LocalDateTime;
 

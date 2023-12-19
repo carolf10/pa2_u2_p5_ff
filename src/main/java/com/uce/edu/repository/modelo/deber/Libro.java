@@ -1,4 +1,4 @@
-package com.uce.edu.repository.modelo;
+package com.uce.edu.repository.modelo.deber;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

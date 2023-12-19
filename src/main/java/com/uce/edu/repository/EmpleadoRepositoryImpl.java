@@ -21,4 +21,23 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 
 	}
 
+	@Override
+	public Empleado seleccionar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.entityManager.find(Empleado.class, id);
+	}
+
+	@Override
+	public void actualizar(Empleado empleado) {
+		this.entityManager.merge(empleado);
+		
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		Empleado empleado= this.seleccionar(id);
+		this.entityManager.remove(empleado);
+		
+	}
+
 }

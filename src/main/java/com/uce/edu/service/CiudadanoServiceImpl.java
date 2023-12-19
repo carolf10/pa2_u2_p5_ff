@@ -24,4 +24,16 @@ public class CiudadanoServiceImpl implements ICiudadanoService {
 		return this.iCiudadanoRepository.seleccionar(id);
 	}
 
+	@Override
+	public void actualizar(Ciudadano ciudadano) {
+		this.iCiudadanoRepository.actualizar(ciudadano);
+		
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		this.iCiudadanoRepository.eliminar(id);
+		
+	}
+
 }
