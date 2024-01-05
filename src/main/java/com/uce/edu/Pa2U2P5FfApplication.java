@@ -1,7 +1,5 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,16 +8,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.repository.modelo.Ciudadano;
-import com.uce.edu.repository.modelo.Empleado;
 import com.uce.edu.repository.modelo.Habitacion;
 import com.uce.edu.repository.modelo.Hotel;
-import com.uce.edu.service.ICiudadanoService;
-import com.uce.edu.service.IEmpleadoService;
+import com.uce.edu.service.IHabitacionService;
 import com.uce.edu.service.IHotelService;
 
 @SpringBootApplication
 public class Pa2U2P5FfApplication implements CommandLineRunner{
+	
+	@Autowired
+	private IHabitacionService iHabitacionService;
 	
 	@Autowired
 	private IHotelService iHotelService;
@@ -30,80 +28,49 @@ public class Pa2U2P5FfApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		/*Ejemplo 1
+		Hotel h1 = new Hotel();
+		h1.setDireccion("Patria");
+		h1.setNombre("Hilton Colon");
+		Habitacion ha11= new Habitacion();
+		Habitacion ha12= new Habitacion();
+		List<Habitacion> habitaciones1= new ArrayList<>();
+		habitaciones1.add(ha12);
+		habitaciones1.add(ha11);
+		h1.setHabitaciones(habitaciones1);
+		this.iHotelService.guardar(h1);*/
 		
-		/*Ciudadano ciudadano= new Ciudadano();
-		ciudadano.setNombre("Fatima");
-		ciudadano.setApellido("Fiallos");
+		/*//Ejemplo 2
+		Hotel h2 = new Hotel();
+		Habitacion ha2 = new Habitacion();
+		ha2.setClase("Economico");
+		ha2.setHotel(h2);
+		ha2.setNumero("E1");
+		this.iHabitacionService.guardar(ha2);*/
 		
-		Ciudadano ciud2= this.iCiudadanoService.buscar(1);
+		//Ejemplo 3
+		Hotel h3= new Hotel();
+		h3.setDireccion("Patria");
+		h3.setNombre("Tambo Real");
+		Habitacion ha31 = new Habitacion();
+		ha31.setClase("Presidencial");
+		ha31.setNumero("P1");
+		Habitacion ha32 = new Habitacion();
+		ha32.setClase("Economico");
+		ha32.setNumero("E2");
+		List<Habitacion> habitaciones3 = new ArrayList<>();
+		habitaciones3.add(ha32);
+		habitaciones3.add(ha31);
+		h3.setHabitaciones(habitaciones3);
+		//this.iHotelService.guardar(h3);
 		
-		Empleado empleado = new Empleado();
-		empleado.setFechaIngreso(LocalDateTime.now());
-		empleado.setSalario(new BigDecimal(450));
-		empleado.setCiudadano(ciud2);
-		//this.iEmpleadoService.guardar(empleado);
+		//Ejemplo 4
+		this.iHabitacionService.eliminar(2);
 		
-		Ciudadano ciud = new Ciudadano();
-		ciud.setNombre("Maria");
-		ciud.setApellido("Checa");
-		//this.iCiudadanoService.guardar(ciud);
+		h3.setNombre("Nuevo Tambo Real");
+		this.iHotelService.actualizar(h3);
 		
-		Empleado empl = new Empleado();
-		empl.setFechaIngreso(LocalDateTime.now());
-		empl.setSalario(new BigDecimal(456));
-		empl.setCiudadano(ciud);
-		
-		this.iEmpleadoService.borrar(5);
-		
-		Ciudadano ciud3 = this.iCiudadanoService.buscar(2);
-		
-		Empleado empl = new Empleado();
-		empl.setFechaIngreso(LocalDateTime.now());
-		empl.setSalario(new BigDecimal(456));
-		empl.setCiudadano(ciud3);
-		
-		Ciudadano ciud = new Ciudadano();
-		
-		Empleado empl = new Empleado();
-		empl.setCiudadano(ciud);
-		
-		this.iEmpleadoService.guardar(empl);
-		
-		
-		
-		Empleado empl = new Empleado();
-		
-		Ciudadano ciud= new Ciudadano();
-		ciud.setEmpleado(empl);
-		ciud.setNombre("Jorge");
-		ciud.setApellido("Abad");
-		
-		empl.setCiudadano(ciud);
-		
-		this.iCiudadanoService.guardar(ciud);*/
-		
-		Hotel hotel = new Hotel();
-		hotel.setDireccion("Colon");
-		hotel.setNombre("Marriot");
-		
-		Habitacion hab1= new Habitacion();
-		hab1.setClase("Economica");
-		hab1.setHotel(hotel);
-		hab1.setNumero("A1");
-		
-		Habitacion hab2= new Habitacion();
-		hab2.setClase("Presidencial");
-		hab2.setHotel(hotel);
-		hab2.setNumero("A2");
 
-		List<Habitacion> habitaciones= new ArrayList<>();
-		habitaciones.add(hab1);
-		habitaciones.add(hab2);
-		
-		hotel.setHabitaciones(habitaciones);
-		this.iHotelService.guardar(hotel);
-		
-		
 	}
 
 }
