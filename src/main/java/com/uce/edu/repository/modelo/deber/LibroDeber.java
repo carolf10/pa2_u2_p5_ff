@@ -9,8 +9,8 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "libro")
-public class Libro {
+@Table(name = "libro_deber")
+public class LibroDeber {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_libro")
 	@SequenceGenerator(name = "seq_libro", sequenceName = "seq_libro", allocationSize = 1)
