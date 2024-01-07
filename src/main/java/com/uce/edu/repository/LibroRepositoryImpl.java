@@ -20,4 +20,23 @@ public class LibroRepositoryImpl implements ILibroRepository{
 		this.entityManager.persist(libro);
 	}
 
+	@Override
+	public Libro seleccionar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.entityManager.find(Libro.class, id);
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		Libro libro= this.seleccionar(id);
+		this.entityManager.remove(libro);
+		
+	}
+
+	@Override
+	public void actualizar(Libro libro) {
+		this.entityManager.merge(libro);
+		
+	}
+
 }

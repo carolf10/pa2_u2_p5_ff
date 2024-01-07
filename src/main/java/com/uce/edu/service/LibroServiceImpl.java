@@ -7,14 +7,32 @@ import com.uce.edu.repository.ILibroRepository;
 import com.uce.edu.repository.modelo.Libro;
 
 @Service
-public class LibroServiceImpl  implements ILibroService{
+public class LibroServiceImpl implements ILibroService{
 	
 	@Autowired
 	private ILibroRepository iLibroRepository;
 
 	@Override
-	public void guadar(Libro libro) {
+	public Libro buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.iLibroRepository.seleccionar(id);
+	}
+
+	@Override
+	public void guardar(Libro libro) {
 		this.iLibroRepository.insertar(libro);
+		
+	}
+
+	@Override
+	public void eliminar(Integer id) {
+		this.iLibroRepository.eliminar(id);
+		
+	}
+
+	@Override
+	public void actualizar(Libro libro) {
+		this.iLibroRepository.actualizar(libro);
 		
 	}
 
