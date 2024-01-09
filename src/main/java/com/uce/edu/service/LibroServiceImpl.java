@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.uce.edu.repository.ILibroRepository;
 import com.uce.edu.repository.modelo.Libro;
+import com.uce.edu.repository.modelo.Libro2;
 
 @Service
 public class LibroServiceImpl implements ILibroService{
@@ -35,5 +36,18 @@ public class LibroServiceImpl implements ILibroService{
 		this.iLibroRepository.actualizar(libro);
 		
 	}
+
+	@Override
+	public void guardar(Libro2 libro) {
+		this.iLibroRepository.insertar(libro);
+		
+	}
+
+	@Override
+	public Libro buscarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iLibroRepository.seleccionarPorNombre(nombre);
+	}
+
 
 }

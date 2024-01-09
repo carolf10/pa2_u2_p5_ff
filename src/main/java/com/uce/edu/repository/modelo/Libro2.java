@@ -3,14 +3,18 @@ package com.uce.edu.repository.modelo;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
-//@Entity
-//@Table(name = "libro2")
+@Entity
+@Table(name = "libro2")
 public class Libro2 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_libro_p2")
@@ -24,6 +28,7 @@ public class Libro2 {
 	@Column (name = "libr_fecha_publicacion")
 	private LocalDateTime fechaPublicacion;
 	
+	@OneToMany(mappedBy = "libro2", cascade = CascadeType.ALL)
 	private List<AutorLibro> autoresLibros;
 
 	public Integer getId() {
