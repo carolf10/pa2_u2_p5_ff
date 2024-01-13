@@ -1,7 +1,6 @@
 package com.uce.edu;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.repository.modelo.Autor2;
-import com.uce.edu.repository.modelo.AutorLibro;
 import com.uce.edu.repository.modelo.Libro;
-import com.uce.edu.repository.modelo.Libro2;
 import com.uce.edu.service.ILibroService;
 
 @SpringBootApplication
@@ -27,42 +23,30 @@ public class Pa2U2P5FfApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Libro2 libro = new Libro2();
-		libro.setTitulo("JAVA");
-		libro.setFechaPublicacion(LocalDateTime.now());
-
-		Autor2 a1 = new Autor2();
-		a1.setNacionalidad("Ecuatoriano");
-		a1.setNombre("Pepito Teran2");
-
-		Autor2 a2 = new Autor2();
-		a2.setNacionalidad("Ecuatoriano");
-		a2.setNombre("Daniel Teran2");
-
-		List<Autor2> autores = new ArrayList<>();
-		autores.add(a1);
-		autores.add(a2);
-
-		AutorLibro autorLibro= new AutorLibro();
-		autorLibro.setLibro2(libro);
-		autorLibro.setAutor2(a1);
-		autorLibro.setFecha(LocalDateTime.now());
+		System.out.println("Con Query----------");
+		List<Libro> lista= this.iLibroService.buscarPorFecha(LocalDateTime.of(2023, 1, 1, 7, 15));
+		for(Libro l : lista) {
+			System.out.println(l);
+		}
 		
-		AutorLibro autorLibro2= new AutorLibro();
-		autorLibro2.setLibro2(libro);
-		autorLibro2.setAutor2(a2);
-		autorLibro2.setFecha(LocalDateTime.now());
+		System.out.println("Con TypedQuery----------");
+		Libro libro1= this.iLibroService.buscarPorTitulo("JAVA");
+		System.out.println(libro1);
 		
-		List<AutorLibro> autoresLibros = new ArrayList<>();
-		autoresLibros.add(autorLibro);
-		autoresLibros.add(autorLibro2);
+		List<Libro> lista2= this.iLibroService.buscarPorFecha(LocalDateTime.of(2023, 1, 1, 7, 15));
+		for(Libro l : lista2) {
+			System.out.println(l);
+		}
 		
-		libro.setAutoresLibros(autoresLibros);
+		System.out.println("Con NamedQuery--------");
+		Libro libro2= this.iLibroService.guadarPorTituloNamed("RStudio");
+		System.out.println(libro2);
 		
-		//this.iLibroService.guardar(libro);
+		List<Libro> lista3= this.iLibroService.buscarPorFecha(LocalDateTime.of(2023, 1, 1, 7, 15));
+		for(Libro l : lista3) {
+			System.out.println(l);
+		}
 		
-		Libro libroFinal= this.iLibroService.buscarPorNombre("JAVA");
-		System.out.println(libroFinal);
 	}
 
 }
