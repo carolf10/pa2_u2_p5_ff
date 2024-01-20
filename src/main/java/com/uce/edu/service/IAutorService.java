@@ -7,5 +7,7 @@ public interface IAutorService {
 	public void guardar (Autor autor);
 	public void eliminar(Integer id);
 	public void actualizar (Autor autor);
+	public Autor buscarPorNombre(String nombre);
+	public Autor buscarPorNacionalidad(String nacionalidad);
 
 }

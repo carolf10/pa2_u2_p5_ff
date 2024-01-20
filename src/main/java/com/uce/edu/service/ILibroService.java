@@ -18,6 +18,7 @@ public interface ILibroService {
 	public List<Libro> buscarPorFechaT(LocalDateTime fecha);
 	public Libro guadarPorTituloNamed(String titulo);
 	public List<Libro> guardarPorFechaNamed(LocalDateTime fechaPublicacion);
+	public Libro buscarPorCodigo(String codigo);
 
 	
 }

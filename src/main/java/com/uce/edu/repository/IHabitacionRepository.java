@@ -10,4 +10,7 @@ public interface IHabitacionRepository {
 	public void actualizar(Habitacion habitacion);
 	
 	public void eliminar (Integer id);
+	public Habitacion seleccionarPorNumero(String numero);
+	
+	public Habitacion seleccionarPorClase(String clase);
 }

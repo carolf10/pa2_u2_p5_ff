@@ -6,6 +6,7 @@ import com.uce.edu.repository.modelo.Hotel;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -38,6 +39,13 @@ public class HotelRepositoryImpl implements IHotelRepository{
 		Hotel hotel= this.seleccionar(id);
 		this.manager.remove(hotel);
 		
+	}
+
+	@Override
+	public Hotel seleccionarPorNombre(String nombre) {
+		TypedQuery<Hotel> query= this.manager.createQuery("SELECT h FROM Hotel h WHERE h.nombre = :nombre", Hotel.class);
+		query.setParameter("nombre", nombre);
+		return query.getSingleResult();
 	}
 
 }

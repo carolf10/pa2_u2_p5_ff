@@ -6,6 +6,7 @@ import com.uce.edu.repository.modelo.Empleado;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -38,6 +39,14 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 		Empleado empleado= this.seleccionar(id);
 		this.entityManager.remove(empleado);
 		
+	}
+
+	@Override
+	public Empleado seleccionarPorCodigo(String codigo) {
+		// TODO Auto-generated method stub
+		TypedQuery<Empleado> query= this.entityManager.createQuery("SELECT e FROM Empleado e WHERE e.codigo = :codigo", Empleado.class);
+		query.setParameter("codigo", codigo);
+		return query.getSingleResult();
 	}
 
 }

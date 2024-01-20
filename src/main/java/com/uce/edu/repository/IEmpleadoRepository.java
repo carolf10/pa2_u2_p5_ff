@@ -7,5 +7,6 @@ public interface IEmpleadoRepository {
 	public void insertar(Empleado empleado);
 	public void actualizar (Empleado empleado);
 	public void eliminar(Integer id);
+	public Empleado seleccionarPorCodigo(String codigo);
 
 }

@@ -6,6 +6,7 @@ import com.uce.edu.repository.modelo.Estudiante;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -38,5 +39,13 @@ public class EstudianteRepositoryImpl implements IEstudianteRepository{
 		Estudiante estu = this.seleccionar(id);
 		this.entityManager.remove(estu);
 	}
+
+	@Override
+	public Estudiante seleccionarPorCedula(String cedula) {
+		TypedQuery<Estudiante> query= this.entityManager.createQuery("SELECT e FROM Estudiante e WHERE e.cedula = :cedula", Estudiante.class);
+		query.setParameter("cedula", cedula);
+		return query.getSingleResult();
+	}
+	
 
 }

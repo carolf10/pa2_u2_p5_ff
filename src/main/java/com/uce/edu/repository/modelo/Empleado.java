@@ -23,6 +23,9 @@ public class Empleado {
 	@Column(name = "empl_id")
 	private Integer id;
 	
+	@Column(name = "empl_codigo")
+	private String codigo;
+	
 	@Column(name = "empl_salario")
 	private BigDecimal salario;
 	
@@ -59,11 +62,18 @@ public class Empleado {
 	public void setCiudadano(Ciudadano ciudadano) {
 		this.ciudadano = ciudadano;
 	}
-	@Override
-	public String toString() {
-		return "Empleado [id=" + id + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso + "]";
+	
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", codigo=" + codigo + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso
+				+ "]";
+	}
 
 }

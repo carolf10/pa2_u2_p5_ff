@@ -6,6 +6,8 @@ import com.uce.edu.repository.modelo.Habitacion;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -37,6 +39,20 @@ public class HabitacionRepositoryImpl implements IHabitacionRepository{
 		Habitacion habitacion = this.seleccionar(id);
 		this.entityManager.remove(habitacion);
 		
+	}
+
+	@Override
+	public Habitacion seleccionarPorNumero(String numero) {
+		TypedQuery<Habitacion> query= this.entityManager.createQuery("SELECT h FROM Habitacion h WHERE h.numero = :numero", Habitacion.class);
+		query.setParameter("numero", numero);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public Habitacion seleccionarPorClase(String clase) {
+		Query query=this.entityManager.createNativeQuery("SELECT * FROM habitacion h WHERE h.habi_clase = :clase",Habitacion.class);
+		query.setParameter("clase", clase);
+		return (Habitacion)query.getSingleResult();
 	}
 
 }

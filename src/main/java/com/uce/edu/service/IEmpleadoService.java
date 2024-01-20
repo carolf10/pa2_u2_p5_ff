@@ -7,5 +7,6 @@ public interface IEmpleadoService {
 	public void guardar(Empleado empleado);
 	public void actualizar (Empleado empleado);
 	public void borrar (Integer id);
+	public Empleado buscarPorCodigo(String codigo);
 
 }

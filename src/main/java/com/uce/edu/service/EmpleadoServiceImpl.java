@@ -36,5 +36,11 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		
 	}
 
+	@Override
+	public Empleado buscarPorCodigo(String codigo) {
+		// TODO Auto-generated method stub
+		return this.iEmpleadoRepository.seleccionarPorCodigo(codigo);
+	}
+
 
 }

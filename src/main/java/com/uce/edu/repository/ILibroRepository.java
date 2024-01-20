@@ -18,6 +18,6 @@ public interface ILibroRepository {
 	public List<Libro> seleccionarPorFecha(LocalDateTime fechaPublicacion);
 	public Libro seleccionarPorTituloNamed(String titulo);
 	public List<Libro> seleccionarPorFechaNamed(LocalDateTime fechaPublicacion);
-
+	public Libro seleccionarPorCodigo(String codigo);
 
 }

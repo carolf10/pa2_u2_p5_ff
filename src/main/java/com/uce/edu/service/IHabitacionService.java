@@ -10,4 +10,8 @@ public interface IHabitacionService {
 	public void actualizar(Habitacion habitacion);
 	
 	public void eliminar (Integer id);
+	
+	public Habitacion buscarPorNumero(String numero);
+	
+	public Habitacion buscarPorClase(String clase);
 }

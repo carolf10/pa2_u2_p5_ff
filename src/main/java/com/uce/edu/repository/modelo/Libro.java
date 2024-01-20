@@ -33,6 +33,9 @@ public class Libro {
 	@Column (name = "libr_fecha_publicacion")
 	private LocalDateTime fechaPublicacion;
 	
+	@Column(name = "libr_codigo")
+	private String codigo;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "autor_libro",
 	joinColumns = @JoinColumn(name ="auli_id_libro"), //secundaria
@@ -71,9 +74,20 @@ public class Libro {
 		this.autores = autores;
 	}
 
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	@Override
 	public String toString() {
-		return "Libro [id=" + id + ", titulo=" + titulo + ", fechaPublicacion=" + fechaPublicacion + "]";
+		return "Libro [id=" + id + ", titulo=" + titulo + ", fechaPublicacion=" + fechaPublicacion + ", codigo="
+				+ codigo + "]";
 	}
+	
+	
 	
 }

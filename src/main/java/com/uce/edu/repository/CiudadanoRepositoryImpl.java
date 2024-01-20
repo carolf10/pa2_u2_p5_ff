@@ -59,4 +59,11 @@ public class CiudadanoRepositoryImpl implements ICiudadanoRepository {
 		return (Ciudadano)query.getSingleResult();
 	}
 
+	@Override
+	public Ciudadano seleccionarPorNombre(String nombre) {
+		Query query=this.entityManager.createNativeQuery("SELECT * FROM ciudadano c WHERE c.ciud_nombre = :nombre",Ciudadano.class);
+		query.setParameter("nombre", nombre);
+		return (Ciudadano)query.getSingleResult();
+	}
+
 }
