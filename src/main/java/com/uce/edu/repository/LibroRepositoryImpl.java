@@ -105,9 +105,10 @@ public class LibroRepositoryImpl implements ILibroRepository{
 
 	@Override
 	public Libro seleccionarPorCodigo(String codigo) {
-		Query query= this.entityManager.createNativeQuery("SELECT l FROM libro l WHERE l.libr_codigo = :codigo", Libro.class);
+		/*Query query= this.entityManager.createNativeQuery("SELECT * FROM libro l WHERE l.libr_codigo = :codigo", Libro.class);
 		query.setParameter("codigo", codigo);
-		return (Libro)query.getSingleResult();
+		return (Libro)query.getSingleResult();*/
+		return null;
 	}
 
 }

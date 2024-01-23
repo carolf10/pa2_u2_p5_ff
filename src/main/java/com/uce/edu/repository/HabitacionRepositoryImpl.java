@@ -50,9 +50,10 @@ public class HabitacionRepositoryImpl implements IHabitacionRepository{
 
 	@Override
 	public Habitacion seleccionarPorClase(String clase) {
-		Query query=this.entityManager.createNativeQuery("SELECT * FROM habitacion h WHERE h.habi_clase = :clase",Habitacion.class);
+		/*Query query=this.entityManager.createNativeQuery("SELECT * FROM habitacion h WHERE h.habi_clase = :clase",Habitacion.class);
 		query.setParameter("clase", clase);
-		return (Habitacion)query.getSingleResult();
+		return (Habitacion)query.getSingleResult();*/
+		return null;
 	}
 
 }

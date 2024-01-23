@@ -42,9 +42,9 @@ public class ExpedienteAcademicoRepositoryImpl implements IExpedienteAcademicoRe
 
 	@Override
 	public ExpedienteAcademico seleccionarPorCodigo(String codigo) {
-		Query query= this.entityManager.createNativeQuery("SELECT ea FROM expediente_academico ea WHERE ea.exac_codigo = :codigo", ExpedienteAcademico.class);
+		/*Query query= this.entityManager.createNativeQuery("SELECT * FROM expediente_academico ea WHERE ea.exac_codigo = :codigo", ExpedienteAcademico.class);
 		query.setParameter("codigo", codigo);
-		return (ExpedienteAcademico)query.getSingleResult();
+		return (ExpedienteAcademico)query.getSingleResult();*/return null;
 	}
 
 }

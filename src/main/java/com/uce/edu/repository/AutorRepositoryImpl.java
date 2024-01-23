@@ -53,9 +53,10 @@ public class AutorRepositoryImpl implements IAutorRepository{
 	@Override
 	public Autor seleccionarPorNacionalidad(String nacionalidad) {
 		// TODO Auto-generated method stub
-		Query query= this.entityManager.createNativeQuery("SELECT a FROM autor a WHERE a.auto_nacionalidad = :nacionalidad", Autor.class);
+		/*Query query= this.entityManager.createNativeQuery("SELECT a FROM autor a WHERE a.auto_nacionalidad = :nacionalidad", Autor.class);
 		query.setParameter("nacionalidad", nacionalidad);
-		return (Autor)query.getSingleResult();
+		return (Autor)query.getSingleResult();*/
+		return null;
 	}
 
 }
