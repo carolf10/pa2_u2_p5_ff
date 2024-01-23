@@ -19,5 +19,7 @@ public interface ILibroRepository {
 	public Libro seleccionarPorTituloNamed(String titulo);
 	public List<Libro> seleccionarPorFechaNamed(LocalDateTime fechaPublicacion);
 	public Libro seleccionarPorCodigo(String codigo);
+	public Libro seleccionarPorCodigoTitulo(String codigo, String titulo);
+	
 
 }

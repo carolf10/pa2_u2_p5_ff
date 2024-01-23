@@ -32,6 +32,9 @@ public class Empleado {
 	@Column(name = "empl_fecha_ingreso")
 	private LocalDateTime fechaIngreso;
 	
+	@Column(name = "empl_direccion")
+	private String direccion;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "empl_id_ciudadano")
 	private Ciudadano ciudadano;
@@ -70,10 +73,17 @@ public class Empleado {
 		this.codigo = codigo;
 	}
 	
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 	@Override
 	public String toString() {
 		return "Empleado [id=" + id + ", codigo=" + codigo + ", salario=" + salario + ", fechaIngreso=" + fechaIngreso
-				+ "]";
+				+ ", direccion=" + direccion + "]";
 	}
+	
 
 }

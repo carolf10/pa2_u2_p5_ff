@@ -9,5 +9,6 @@ public interface IAutorService {
 	public void actualizar (Autor autor);
 	public Autor buscarPorNombre(String nombre);
 	public Autor buscarPorNacionalidad(String nacionalidad);
+	public Autor buscarPorNombreNacionalidad(String nombre, String nacionalidad);
 
 }

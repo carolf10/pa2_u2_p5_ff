@@ -42,4 +42,10 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		return this.iEstudianteRepository.seleccionarPorCedula(cedula);
 	}
 
+	@Override
+	public Estudiante buscarPorCedulaNombre(String cedula, String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepository.seleccionarPorCedulaNombre(cedula, nombre);
+	}
+
 }

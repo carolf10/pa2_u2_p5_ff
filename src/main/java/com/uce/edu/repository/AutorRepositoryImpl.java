@@ -6,8 +6,11 @@ import com.uce.edu.repository.modelo.Autor;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -57,6 +60,20 @@ public class AutorRepositoryImpl implements IAutorRepository{
 		query.setParameter("nacionalidad", nacionalidad);
 		return (Autor)query.getSingleResult();*/
 		return null;
+	}
+
+	@Override
+	public Autor seleccionarPorNombreNacionalidad(String nombre, String nacionalidad) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Autor> criteriaQuery = criteriaBuilder.createQuery(Autor.class);
+		Root<Autor> myFrom = criteriaQuery.from(Autor.class);
+		Predicate condicionNombre=criteriaBuilder.equal(myFrom.get("nombre"), nombre);
+		Predicate condicionNacionalidad = criteriaBuilder.equal(myFrom.get("nacionalidad"), nacionalidad);
+		Predicate condicionFinal = criteriaBuilder.and(condicionNacionalidad,condicionNombre);
+		criteriaQuery.select(myFrom).where(condicionFinal);
+		TypedQuery<Autor> query =this.entityManager.createQuery(criteriaQuery);
+		return query.getSingleResult();
 	}
 
 }

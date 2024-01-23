@@ -9,5 +9,6 @@ public interface IAutorRepository {
 	public void eliminar(Integer id);
 	public Autor seleccionarPorNombre(String nombre);
 	public Autor seleccionarPorNacionalidad(String nacionalidad);
+	public Autor seleccionarPorNombreNacionalidad(String nombre, String nacionalidad);
 	
 }

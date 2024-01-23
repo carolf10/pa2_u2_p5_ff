@@ -12,6 +12,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -109,6 +113,20 @@ public class LibroRepositoryImpl implements ILibroRepository{
 		query.setParameter("codigo", codigo);
 		return (Libro)query.getSingleResult();*/
 		return null;
+	}
+
+	@Override
+	public Libro seleccionarPorCodigoTitulo(String codigo, String titulo) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Libro> criteriaQuery = criteriaBuilder.createQuery(Libro.class);
+		Root<Libro> myFrom = criteriaQuery.from(Libro.class);
+		Predicate condicionTitulo = criteriaBuilder.equal(myFrom.get("titulo"), titulo);
+		Predicate condicionCodigo = criteriaBuilder.equal(myFrom.get("codigo"), codigo);
+		Predicate condicionFinal = criteriaBuilder.and(condicionCodigo,condicionTitulo);
+		criteriaQuery.select(myFrom).where(condicionFinal);
+		TypedQuery<Libro> query = this.entityManager.createQuery(criteriaQuery);
+		return query.getSingleResult();
 	}
 
 }

@@ -6,8 +6,11 @@ import com.uce.edu.repository.modelo.Habitacion;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -54,6 +57,25 @@ public class HabitacionRepositoryImpl implements IHabitacionRepository{
 		query.setParameter("clase", clase);
 		return (Habitacion)query.getSingleResult();*/
 		return null;
+	}
+
+	@Override
+	public Habitacion seleccionarPorNumeroClase(String numero, String clase) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Habitacion> criteriaQuery = criteriaBuilder.createQuery(Habitacion.class);
+		Root<Habitacion> myFrom = criteriaQuery.from(Habitacion.class);
+		Predicate condicionFinal = null;
+		Predicate condicionNumero = criteriaBuilder.equal(myFrom.get("numero"), numero);
+		Predicate condicionClase = criteriaBuilder.equal(myFrom.get("clase"), clase);
+		if(clase.startsWith("E")) {
+			condicionFinal=criteriaBuilder.equal(myFrom.get("numero"), numero);
+		}else if(clase.startsWith("N")){
+			condicionFinal=criteriaBuilder.and(condicionNumero,condicionClase);
+		}
+		criteriaQuery.select(myFrom).where(condicionFinal);
+		TypedQuery<Habitacion> query= this.entityManager.createQuery(criteriaQuery);
+		return query.getSingleResult();
 	}
 
 }

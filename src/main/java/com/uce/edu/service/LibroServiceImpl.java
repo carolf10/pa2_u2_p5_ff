@@ -88,5 +88,11 @@ public class LibroServiceImpl implements ILibroService{
 		return this.iLibroRepository.seleccionarPorCodigo(codigo);
 	}
 
+	@Override
+	public Libro buscarPorCodigoTitulo(String codigo, String titulo) {
+		// TODO Auto-generated method stub
+		return this.iLibroRepository.seleccionarPorCodigoTitulo(codigo, titulo);
+	}
+
 
 }

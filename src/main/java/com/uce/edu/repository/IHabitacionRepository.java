@@ -13,4 +13,6 @@ public interface IHabitacionRepository {
 	public Habitacion seleccionarPorNumero(String numero);
 	
 	public Habitacion seleccionarPorClase(String clase);
+	
+	public Habitacion seleccionarPorNumeroClase(String numero, String clase);
 }

@@ -14,4 +14,6 @@ public interface IHabitacionService {
 	public Habitacion buscarPorNumero(String numero);
 	
 	public Habitacion buscarPorClase(String clase);
+	
+	public Habitacion buscarPorNumeroClase(String numero, String clase);
 }

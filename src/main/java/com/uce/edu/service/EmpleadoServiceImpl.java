@@ -1,5 +1,7 @@
 package com.uce.edu.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,12 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	public Empleado buscarPorCodigo(String codigo) {
 		// TODO Auto-generated method stub
 		return this.iEmpleadoRepository.seleccionarPorCodigo(codigo);
+	}
+
+	@Override
+	public Empleado buscarPorCodigoDireccion(String codigo, String direccion) {
+		// TODO Auto-generated method stub
+		return this.iEmpleadoRepository.seleccionarPorCodigoDireccion(codigo, direccion);
 	}
 
 
